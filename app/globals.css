@@ -1,0 +1,71 @@
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --font-sans: 'Outfit', sans-serif;
+}
+
+body {
+  background-color: #050508;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Slim Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050508;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0066ff;
+}
+
+/* Premium Card Glassmorphism Utility */
+.glass-panel {
+  background: rgba(18, 18, 24, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-interactive {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-panel-interactive:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 102, 255, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 102, 255, 0.15);
+}
+
+/* Underglow pulsing animation */
+@keyframes breathing-glow {
+  0%, 100% { opacity: 0.4; filter: blur(15px); }
+  50% { opacity: 0.8; filter: blur(25px); }
+}
+
+.underglow-breathe {
+  animation: breathing-glow 4s ease-in-out infinite;
+}
+
+/* Wheel rotation animation for WebGL/Configurator driving simulation */
+@keyframes spin-all {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-wheel {
+  animation: spin-all 1s linear infinite;
+}
