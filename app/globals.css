@@ -1,0 +1,127 @@
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --font-sans: 'Outfit', sans-serif;
+  
+  /* Apple Light Mode Variables */
+  --bg-primary: #f5f5f7;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.7);
+  --border-color: rgba(0, 0, 0, 0.08);
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --text-muted: #86868b;
+  
+  --accent-blue: #0066cc;
+  --accent-blue-hover: #0077ed;
+  --accent-red: #ff3b30;
+  --accent-red-hover: #ff453a;
+  --accent-green: #34c759;
+  --accent-yellow: #ff9500;
+
+  --shadow-premium: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] {
+  /* Apple Dark Mode Variables */
+  --bg-primary: #000000;
+  --bg-secondary: #161617;
+  --bg-card: rgba(22, 22, 23, 0.7);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --text-primary: #f5f5f7;
+  --text-secondary: #86868b;
+  --text-muted: #6e6e73;
+  
+  --accent-blue: #0066ff;
+  --accent-blue-hover: #3385ff;
+  --accent-red: #ff3333;
+  --accent-red-hover: #ff5555;
+  --accent-green: #30d158;
+  --accent-yellow: #ffd60a;
+
+  --shadow-premium: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Smooth Apple UI Transitions on theme toggle */
+*, *::before, *::after {
+  transition-property: background-color, border-color, text-decoration-color, fill, stroke;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Slim Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-blue);
+}
+
+/* Apple Card Glassmorphism Utility */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  box-shadow: var(--shadow-premium);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.glass-panel-interactive:hover {
+  transform: scale(1.008) translateY(-2px);
+  border-color: rgba(0, 102, 255, 0.25);
+  box-shadow: 0 12px 40px rgba(0, 102, 255, 0.08);
+}
+
+/* Refined borders */
+.border-premium {
+  border: 1px solid var(--border-color);
+}
+
+/* Underglow pulsing animation */
+@keyframes breathing-glow {
+  0%, 100% { opacity: 0.35; filter: blur(16px); }
+  50% { opacity: 0.7; filter: blur(22px); }
+}
+
+.underglow-breathe {
+  animation: breathing-glow 4s ease-in-out infinite;
+}
+
+/* Wheel rotation animation */
+@keyframes spin-all {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-wheel {
+  animation: spin-all 1s linear infinite;
+}
+
+/* Input elements transitions */
+input, select, button {
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
